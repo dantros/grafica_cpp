@@ -1,0 +1,2 @@
+add_subdirectory(grafica)
+add_subdirectory(examples)

@@ -1,0 +1,16 @@
+function(MakeExample TARGETNAME FILENAME)
+	add_executable(${TARGETNAME} ${FILENAME})
+	set_property(TARGET ${TARGETNAME} PROPERTY CXX_STANDARD 20)
+	set_property(TARGET ${TARGETNAME} PROPERTY FOLDER examples)
+	target_link_libraries(${TARGETNAME} PRIVATE grafica)
+	target_include_directories(${TARGETNAME} PRIVATE ${GRAFICA_INCLUDE_DIRECTORY} ${THIRD_PARTY_INCLUDE_DIRECTORIES})
+
+endfunction(MakeExample)
+
+MakeExample(ex_quad_pro ex_quad_pro.cpp)
+MakeExample(ex_4shapes ex_4shapes.cpp)
+MakeExample(ex_texture_boo ex_texture_boo.cpp)
+MakeExample(ex_projections ex_projections.cpp)
+MakeExample(ex_scene_graph_3dcars ex_scene_graph_3dcars.cpp)
+MakeExample(ex_lighting ex_lighting.cpp)
+MakeExample(ex_lighting_texture ex_lighting_texture.cpp)
