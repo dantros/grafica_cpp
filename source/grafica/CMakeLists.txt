@@ -8,6 +8,7 @@ set(GRAFICA_HEADERS
 		shape.h
 		simple_eigen.h
 		transformations.h
+		simple_timer.h
 		)
 set(GRAFICA_SOURCES
 		basic_shapes.cpp
