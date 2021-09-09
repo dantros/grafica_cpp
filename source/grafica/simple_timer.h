@@ -40,7 +40,7 @@ public:
 
         _stopped = true;
 
-        //std::cout << "duration: " << durationAsFloat << "ms" << std::endl;
+        //std::cout << _name << ": "<< durationAsFloat << "ms" << std::endl;
         _logProfileFunction({ _name , durationAsFloat });
     }
 
@@ -56,6 +56,10 @@ struct ProfileResult
     std::string timerName;
     float duration;
 };
+
+ProfileResult res("h", 2.0f);
+
+
 
 std::ostream& operator<<(std::ostream& os, const ProfileResult& result)
 {

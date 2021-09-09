@@ -130,7 +130,7 @@ int main()
     constexpr unsigned int SCR_HEIGHT = 600;
     std::string title = "ex_lighting_texture";
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
-    if (window == NULL)
+    if (window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -213,7 +213,7 @@ int main()
         std::stringstream ss;
         ss << title << " " << performanceMonitor;
         glfwSetWindowTitle(window, ss.str().c_str());
-            
+        
         // Using GLFW to check and process input events
         glfwPollEvents();
 
@@ -251,7 +251,7 @@ int main()
 
         {
             PROFILE_SCOPE("uniforms", stats);
-
+            
             //Clearing the screen in both, color and depth
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -292,6 +292,7 @@ int main()
 
         {
             PROFILE_SCOPE("draw calls", stats);
+
             // Drawing the shape
             glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "model"), 1, GL_FALSE, modelWhiteDice.data());
             phongPipeline.drawCall(gpuWhiteDice);
