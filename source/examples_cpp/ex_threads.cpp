@@ -13,6 +13,7 @@ std::queue<NumberType> primeNumbers;
 
 bool isPrime(NumberType number)
 {
+    // extracted from https://en.wikipedia.org/wiki/Primality_test
     //Primality test using 6k+-1 optimization.
     if (number <= 3)
     {
