@@ -8,3 +8,5 @@ function(MakeExample TARGETNAME FILENAME)
 endfunction(MakeExample)
 
 MakeExample(ex_vector ex_vector.cpp)
+MakeExample(ex_struct ex_struct.cpp)
+MakeExample(ex_template ex_template.cpp)
