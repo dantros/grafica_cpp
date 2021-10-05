@@ -1,3 +1,4 @@
 add_subdirectory(grafica)
-add_subdirectory(examples)
+add_subdirectory(examples_cg)
 add_subdirectory(examples_cpp)
+add_subdirectory(examples_libs)
