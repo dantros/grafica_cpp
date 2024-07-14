@@ -12,7 +12,6 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include "shape.h"
 
 namespace Grafica
 {
