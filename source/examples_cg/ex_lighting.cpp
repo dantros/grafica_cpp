@@ -95,8 +95,8 @@ int main()
     }
 
     // Creating our shader programs
-    gr::ModelViewProjectionShaderProgram colorPipeline;
-    gr::PhongColorShaderProgram phongPipeline;
+    const gr::ModelViewProjectionShaderProgram colorPipeline;
+    const gr::PhongColorShaderProgram phongPipeline;
 
     // Creating shapes on GPU memory
     gr::GPUShape gpuAxis = gr::toGPUShape(colorPipeline, gr::createAxis(7));
@@ -126,8 +126,8 @@ int main()
     float t0 = glfwGetTime(), t1, dt;
 	float cameraTheta = std::numbers::pi / 4;
 
-    gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
-    gr::Matrix4f model = tr::identity();
+    const gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
+    const gr::Matrix4f model = tr::identity();
 
     // Application loop
     while (!glfwWindowShouldClose(window))

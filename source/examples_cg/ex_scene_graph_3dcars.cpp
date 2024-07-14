@@ -123,7 +123,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::ModelViewProjectionShaderProgram pipeline;
+    const gr::ModelViewProjectionShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Creating shapes on GPU memory

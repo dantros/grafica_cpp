@@ -93,7 +93,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::ModelViewProjectionShaderProgram pipeline;
+    const gr::ModelViewProjectionShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Creating shapes on GPU memory
@@ -140,14 +140,14 @@ int main()
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
             cameraTheta += 2 * dt;
 
-        gr::Vector3f const viewPos(
+        const gr::Vector3f viewPos(
             10 * std::sin(cameraTheta),
             10 * std::cos(cameraTheta),
             10);
-        gr::Vector3f const eye(0,0,0);
-        gr::Vector3f const at(0,0,1);
+        const gr::Vector3f eye(0,0,0);
+        const gr::Vector3f at(0,0,1);
 
-        gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
+        const gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
 
         glUniformMatrix4fv(glGetUniformLocation(pipeline.shaderProgram, "view"), 1, GL_FALSE, view.data());
 

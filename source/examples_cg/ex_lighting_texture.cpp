@@ -128,7 +128,7 @@ int main()
     // Creating a glfw window
     constexpr unsigned int SCR_WIDTH = 600;
     constexpr unsigned int SCR_HEIGHT = 600;
-    std::string title = "ex_lighting_texture";
+    const std::string title = "ex_lighting_texture";
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
     if (window == nullptr)
     {
@@ -169,8 +169,8 @@ int main()
     /* ImGui End ---- */
 
     // Creating our shader programs
-    gr::ModelViewProjectionShaderProgram colorPipeline;
-    gr::PhongTextureShaderProgram phongPipeline;
+    const gr::ModelViewProjectionShaderProgram colorPipeline;
+    const gr::PhongTextureShaderProgram phongPipeline;
 
     // Creating shapes on GPU memory
     gr::GPUShape gpuAxis = gr::toGPUShape(colorPipeline, gr::createAxis(7));
@@ -194,10 +194,10 @@ int main()
     float t0 = glfwGetTime(), t1, dt;
 	float cameraTheta = std::numbers::pi / 4;
 
-    gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
+    const gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
 
-    gr::Matrix4f modelWhiteDice = tr::translate(-0.75,0,0) * tr::rotationZ(-std::numbers::pi/16.0f) * tr::rotationX( std::numbers::pi );
-    gr::Matrix4f modelBlueDice  = tr::translate( 0.75,0,0) * tr::rotationZ( std::numbers::pi/16.0f);
+    const gr::Matrix4f modelWhiteDice = tr::translate(-0.75,0,0) * tr::rotationZ(-std::numbers::pi/16.0f) * tr::rotationX( std::numbers::pi );
+    const gr::Matrix4f modelBlueDice  = tr::translate( 0.75,0,0) * tr::rotationZ( std::numbers::pi/16.0f);
 
     gr::PerformanceMonitor performanceMonitor(glfwGetTime(), 0.5f);
     // glfw will swap buffers as soon as possible
@@ -247,7 +247,7 @@ int main()
         const gr::Vector3f eye(0,0,0);
         const gr::Vector3f at(0,0,1);
 
-        gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
+        const gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
 
         {
             PROFILE_SCOPE("uniforms", stats);

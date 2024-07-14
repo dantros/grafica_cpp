@@ -59,7 +59,7 @@ int main()
     // Creating a glfw window
     constexpr unsigned int SCR_WIDTH = 600;
     constexpr unsigned int SCR_HEIGHT = 600;
-    std::string title = "ex_4shapes";
+    const std::string title = "ex_4shapes";
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
     if (window == NULL)
     {
@@ -80,7 +80,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::TransformShaderProgram pipeline;
+    const gr::TransformShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Setting up the clear screen color
@@ -116,7 +116,7 @@ int main()
         float theta = glfwGetTime();
 
         // Triangle
-        gr::Matrix4f triangleTransform = 
+        const gr::Matrix4f triangleTransform = 
             tr::translate(0.5, 0.5, 0) * 
             tr::rotationZ(2 * theta) * 
             tr::uniformScale(0.5);
@@ -128,7 +128,7 @@ int main()
         pipeline.drawCall(gpuTriangle);
 
         // Another instance of the triangle
-        gr::Matrix4f triangleTransform2 = 
+        const gr::Matrix4f triangleTransform2 = 
             tr::translate(-0.5, 0.5, 0) *
             tr::scale(
                 0.5 + 0.2 * std::cos(1.5 * theta),
@@ -139,7 +139,7 @@ int main()
         pipeline.drawCall(gpuTriangle);
 
         //Quad
-        gr::Matrix4f quadTransform = 
+        const gr::Matrix4f quadTransform = 
             tr::translate(-0.5, -0.5, 0) *
             tr::rotationZ(-theta) *
             tr::uniformScale(0.7);
@@ -148,7 +148,7 @@ int main()
         pipeline.drawCall(gpuQuad);
 
         // Another instance of the Quad
-        gr::Matrix4f quadTransform2 =
+        const gr::Matrix4f quadTransform2 =
             tr::translate(0.5, -0.5, 0) *
             tr::shearing(0.3 * std::cos(theta), 0, 0, 0, 0, 0) *
             tr::uniformScale(0.7);

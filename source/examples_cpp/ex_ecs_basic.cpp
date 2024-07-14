@@ -65,7 +65,7 @@ int main()
 
     std::vector<Entity> entities{ entityA , entityB, entityC};
 
-    for (auto& entity : entities)
+    for (const auto& entity : entities)
     {
         render(entity);
     }

@@ -140,10 +140,10 @@ void pollJoysticks(JoystickContainer& joysticks)
 
 void drawJoysticks(const JoystickContainer& joysticks, const gr::GPUShape& gpuButtonOff, const gr::GPUShape& gpuButtonOn, const gr::TransformShaderProgram& pipeline)
 {
-    for (auto& elem : joysticks)
+    for (const auto& elem : joysticks)
     {
-        auto& joystickId = elem.first;
-        auto& joystick = elem.second;
+        const auto& joystickId = elem.first;
+        const auto& joystick = elem.second;
 
         float const buttonSize = 2.0f / joystick.buttons.size();
 
@@ -151,7 +151,7 @@ void drawJoysticks(const JoystickContainer& joysticks, const gr::GPUShape& gpuBu
 
         for (std::size_t buttonId = 0; buttonId < joystick.buttons.size(); ++buttonId)
         {
-            gr::Matrix4f transform =
+            const gr::Matrix4f transform =
                 tr::translate(-1.0f + (0.5f * buttonSize) + buttonId * buttonSize, verticalOffset, 0) *
                 tr::uniformScale(buttonSize);
             glUniformMatrix4fv(glGetUniformLocation(pipeline.shaderProgram, "transform"), 1, GL_FALSE, transform.data());
@@ -169,13 +169,13 @@ void drawJoysticks(const JoystickContainer& joysticks, const gr::GPUShape& gpuBu
 
         for (std::size_t axesId = 0; axesId < joystick.axes.size(); ++axesId)
         {
-            gr::Matrix4f transformBackground =
+            const gr::Matrix4f transformBackground =
                 tr::translate(-1.0f + (0.5f * buttonSize) + axesId * buttonSize, verticalOffset + buttonSize, 0) *
                 tr::uniformScale(buttonSize);
             glUniformMatrix4fv(glGetUniformLocation(pipeline.shaderProgram, "transform"), 1, GL_FALSE, transformBackground.data());
             pipeline.drawCall(gpuButtonOff);
 
-            gr::Matrix4f transform =
+            const gr::Matrix4f transform =
                 tr::translate(-1.0f + (0.5f * buttonSize) + axesId * buttonSize, verticalOffset + buttonSize + (joystick.axes[axesId] * buttonSize * 0.5f), 0) *
                 tr::uniformScale(buttonSize * 0.5);
             glUniformMatrix4fv(glGetUniformLocation(pipeline.shaderProgram, "transform"), 1, GL_FALSE, transform.data());
@@ -200,7 +200,7 @@ int main()
     // Creating a glfw window
     constexpr unsigned int SCR_WIDTH = 600;
     constexpr unsigned int SCR_HEIGHT = 600;
-    std::string title = "ex_joystick";
+    const std::string title = "ex_joystick";
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
     if (window == NULL)
     {
@@ -225,7 +225,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::TransformShaderProgram pipeline;
+    const gr::TransformShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Setting up the clear screen color

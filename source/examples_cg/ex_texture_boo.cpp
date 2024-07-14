@@ -78,7 +78,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::TextureTransformShaderProgram pipeline;
+    const gr::TextureTransformShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Creating shapes on GPU memory
@@ -102,7 +102,7 @@ int main()
 
     // Computing some transformations
     float theta, tx, ty, dtx;
-    gr::Matrix4f questionBoxesTransform = tr::translate(0, -0.8, 0) * tr::scale(2, 0.2, 1);
+    const gr::Matrix4f questionBoxesTransform = tr::translate(0, -0.8, 0) * tr::scale(2, 0.2, 1);
 
     // Application loop
     while (!glfwWindowShouldClose(window))

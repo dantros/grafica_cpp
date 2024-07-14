@@ -77,7 +77,7 @@ int main()
     }
 
     // Creating our shader program and telling OpenGL to use it
-    gr::SimpleShaderProgram pipeline;
+    const gr::SimpleShaderProgram pipeline;
     glUseProgram(pipeline.shaderProgram);
 
     // Setting up the clear screen color
@@ -105,7 +105,8 @@ int main()
         glfwSwapBuffers(window);
     }
 
-    // freeing GPU memorygpuShape.clear();
+    // freeing GPU memory
+    gpuShape.clear();
 
     glfwTerminate();
     return 0;
