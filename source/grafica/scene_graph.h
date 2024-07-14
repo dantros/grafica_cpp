@@ -65,22 +65,22 @@ public:
 };
 
 std::optional<SceneGraphNodePtr> findNode(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name);
 
 std::optional<Matrix4f> findTransform(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name,
     const Matrix4f& parentTransform = Transformations::identity());
 
 std::optional<Vector4f> findPosition(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name,
     const Matrix4f& parentTransform = Transformations::identity());
 
 template <typename PipelineType>
 void drawSceneGraphNode(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const PipelineType& pipeline,
     const std::string& transformName,
     const Matrix4f& parentTransform = Transformations::identity())

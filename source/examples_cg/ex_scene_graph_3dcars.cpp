@@ -145,7 +145,7 @@ int main()
     float t0 = glfwGetTime(), t1, dt;
 	float cameraTheta = std::numbers::pi / 4;
 
-    gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
+    const gr::Matrix4f projection = tr::perspective(45, float(SCR_WIDTH)/float(SCR_HEIGHT), 0.1, 100);
 
     // Application loop
     while (!glfwWindowShouldClose(window))
@@ -167,23 +167,21 @@ int main()
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
             cameraTheta += 2 * dt;
 
-        gr::Vector3f const viewPos(
+        const gr::Vector3f viewPos(
             8 * std::sin(cameraTheta),
             8 * std::cos(cameraTheta),
             4);
-        gr::Vector3f const eye(0,0,0);
-        gr::Vector3f const at(0,0,1);
+        const gr::Vector3f eye(0,0,0);
+        const gr::Vector3f at(0,0,1);
 
-        gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
+        const gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
 
         sgRedCarPtr->transform = tr::translate(3 * std::sin( t1 ),0,0.5);
         auto redWheelRotationNodeMaybe = gr::findNode(sgRedCarPtr, "wheelRotation");
         
         // If the node is not found, everything is lost :(
         assert(redWheelRotationNodeMaybe.has_value());
-        
         gr::SceneGraphNode& redWheelRotationNode = *(redWheelRotationNodeMaybe.value());
-
         redWheelRotationNode.transform = tr::rotationY(-10 * t1);
 
         // Uncomment to print the red car position on every iteration

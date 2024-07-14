@@ -18,7 +18,7 @@ void SceneGraphNode::clear()
 }
 
 std::optional<SceneGraphNodePtr> findNode(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name)
 {
     // This is the requested node
@@ -26,9 +26,9 @@ std::optional<SceneGraphNodePtr> findNode(
         return nodePtr;
 
     // No child of this node had the requested name
-    for (auto& childPtr : nodePtr->childs)
+    for (const auto& childPtr : nodePtr->childs)
     {
-        auto nodeMaybe = findNode(childPtr, name);
+        const auto nodeMaybe = findNode(childPtr, name);
         if (nodeMaybe.has_value())
             return nodeMaybe.value();
     }
@@ -38,20 +38,20 @@ std::optional<SceneGraphNodePtr> findNode(
 }
 
 std::optional<Matrix4f> findTransform(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name,
     const Matrix4f& parentTransform)
 {
-    Matrix4f newTransform = parentTransform * nodePtr->transform;
+    const Matrix4f newTransform = parentTransform * nodePtr->transform;
 
     // This is the requested node
     if (nodePtr->name == name)
         return newTransform;
     
     // All childs are checked for the requested name
-    for (const auto& child : nodePtr->childs)
+    for (const auto& childPtr : nodePtr->childs)
     {
-        auto foundTransformMaybe = findTransform(child, name, newTransform);
+        const auto foundTransformMaybe = findTransform(childPtr, name, newTransform);
         if (foundTransformMaybe.has_value())
             return foundTransformMaybe.value();
     }
@@ -61,16 +61,16 @@ std::optional<Matrix4f> findTransform(
 }
 
 std::optional<Vector4f> findPosition(
-    SceneGraphNodePtr nodePtr,
+    const SceneGraphNodePtr& nodePtr,
     const std::string& name,
     const Matrix4f& parentTransform)
 {
-    auto transformMaybe = findTransform(nodePtr, name, parentTransform);
+    const auto transformMaybe = findTransform(nodePtr, name, parentTransform);
 
     if (not transformMaybe.has_value())
         return std::nullopt;
 
-    auto& transform = transformMaybe.value();
+    const auto& transform = transformMaybe.value();
     return transform * Vector4f(0,0,0,1);
 }
 

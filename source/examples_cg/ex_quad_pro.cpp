@@ -17,7 +17,6 @@
 #include <grafica/load_shaders.h>
 #include <grafica/easy_shaders.h>
 #include <grafica/gpu_shape.h>
-#include <grafica/transformations.h>
 
 namespace gr = Grafica;
 
